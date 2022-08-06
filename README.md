@@ -78,3 +78,22 @@ final class ApiTests: XCTestCase {
     }
 }
 ```
+
+
+base URL
+```swift
+import XCTest
+import Swift_API_Test
+
+final class ApiTests: XCTestCase {
+    
+    override func setUp() async throws {
+        baseURL = "http://localhost:8000"
+    }
+    
+    func testExample() async throws {
+        try await APIAssert(url: "/hello", expected: "Good Morning!")
+    }
+    
+}
+
