@@ -7,7 +7,7 @@ public extension XCTestCase {
         url: String,
         method: HTTPMethod = .GET,
         expectedHTTPStatus: HTTPStatus = .ok,
-        expected: Res
+        expected: Res? = nil
     ) async throws {
         guard let request = URLRequest(url: url, method: method) else {
             XCTFail()
@@ -15,6 +15,7 @@ public extension XCTestCase {
         }
         let (data, response) = try await request.request()
         response.assert(expectedHTTPStatus)
+        guard let expected = expected else { return }
         try data.assert(expected)
     }
     
@@ -24,7 +25,7 @@ public extension XCTestCase {
         method: HTTPMethod = .GET,
         parameter: Param,
         expectedHTTPStatus: HTTPStatus = .ok,
-        expected: Res
+        expected: Res? = nil
     ) async throws {
         guard let request = URLRequest(url: url, method: method) else {
             XCTFail()
@@ -32,6 +33,7 @@ public extension XCTestCase {
         }
         let (data, response) = try await request.request(parameter)
         response.assert(expectedHTTPStatus)
+        guard let expected = expected else { return }
         try data.assert(expected)
     }
 }
