@@ -72,7 +72,8 @@ final class ApiTests: XCTestCase {
         try await APIAssert(
             url: "http://localhost:8000/object",
             method: .DELETE,
-            expectedHTTPStatus: .noContent
+            expectedHTTPStatus: .noContent,
+            expected: ""
         )
     }
 }
