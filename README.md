@@ -32,6 +32,9 @@ let package = Package(
 
 Test File
 ```swift
+import XCTest
+import Swift_API_Test
+
 final class ApiTests: XCTestCase {
     func testGET() async throws {
         try await APIAssert(url: "http://localhost:8000/hello", expected: "Good Morning!")
