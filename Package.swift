@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "APITest",
+    name: "Swift-API-Test",
     platforms: [
         .macOS(.v12)
     ],
